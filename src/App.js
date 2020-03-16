@@ -1,9 +1,8 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from "react";
-import { Route, withRouter } from "react-router-dom";
+import { Route, withRouter, HashRouter } from "react-router-dom";
 import {connect} from "react-redux";
 import {compose} from "redux";
-import {BrowserRouter as Router} from "react-router-dom";
 import {store} from "./redux/store";
 import {Provider} from "react-redux";
 import HeaderContainer from "./components/Header/HeaderContainer";
@@ -24,9 +23,9 @@ const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsCo
 const AppContainer = () => {
   return (
     <Provider store={store}>
-      <Router basename={process.env.PUBLIC_URL}> {/* чтобы приложение не падало при роутинге после деплоя */}
+      <HashRouter basename={process.env.PUBLIC_URL}> {/* чтобы приложение не падало при роутинге после деплоя */}
         <AppWithRouter/>
-      </Router>
+      </HashRouter> {/* HashRouter позволяет переключаться не по url, а по хэшам */}
     </Provider>
   );
 };
