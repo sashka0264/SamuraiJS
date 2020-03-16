@@ -36,7 +36,8 @@ const LoginForm = ({handleSubmit, error}:any) => {
         />Запомнить меня
       </div>
 
-      <button>Войти</button>
+      <button type="submit">Войти!</button>
+
       <div className={style.appLoginError}>{error}</div>
     </form>
   );
