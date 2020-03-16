@@ -24,7 +24,7 @@ const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsCo
 const AppContainer = () => {
   return (
     <Provider store={store}>
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}> {/* чтобы приложение не падало при роутинге после деплоя */}
         <AppWithRouter/>
       </Router>
     </Provider>

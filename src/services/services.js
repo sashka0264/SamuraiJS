@@ -5,7 +5,7 @@ const base = axios.create({
   // withCredentials (переводится как ваша авторизованность) - чтобы цепануть cookie 
   baseURL: "https://social-network.samuraijs.com/api/1.0/",
   headers: {"API-KEY":"9c4c0b67-afad-4fc5-8099-60e295f78a94"}
-});
+});                    
 
 const usersAPI = {
   getUsers(currentPage = 1, pageSize = 10) {
