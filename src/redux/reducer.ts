@@ -29,7 +29,7 @@ export const initialState = {
 	},
 	profilePage: {
 		posts: [ 
-			// {id: 1, message: "Тестовый пост", likes: 12}
+			{id: 1, message: "Мой первый пост!", likes: 12}
 		] as Array<{id: number, message: string, likes: number}>,
 		profile: {} as {},
 		status: "" as string

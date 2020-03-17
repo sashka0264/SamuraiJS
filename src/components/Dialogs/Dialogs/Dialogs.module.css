@@ -8,6 +8,7 @@
 	grid-template-columns: 3fr 9fr;
 	height: 100%;
 	position: relative;
+	margin-bottom: 75px;
 }
 
 .appDialogsMessagesSend {

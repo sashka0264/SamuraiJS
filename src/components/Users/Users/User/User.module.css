@@ -29,12 +29,12 @@
 .appUsersItemAboutBlock {
 	display: flex;
 	justify-content: space-between;
-	width: 83%;
-	padding: 12px;
+    width: 80%;
+    padding: 5px;
 	box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
 	border-radius: 6px;
 	background-color: #ebecf0;
-	margin-left: 25px;
+	margin-left: 13px;
 }
 
 .appUsersItemFullname {
