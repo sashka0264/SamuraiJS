@@ -11,8 +11,6 @@ interface IProps {
 const Header = ({isAuth, login, logoutTC}: IProps) => {
   return (
     <header className={style.appHeader}>
-      <img alt="menu-burger" className={style.appHeaderImage} src="https://siliconprice.com/img/mobileMenuIcon.png"/>
-
       <div className={style.appHeaderLoginBlock}>
         <NavLink className={style.appHeaderLogIn} to="/login">
           <span>{isAuth ? `${login}` : "Войти"}</span>

@@ -5,7 +5,25 @@ import ProfileStatus from "./ProfileStatus/ProfileStatus";
 import style from "./ProfileInfo.module.css";
 import defaultAvatar from "./img/defaultAvatar.png";
 
-const ProfileInfo = ({profile, isAuthUserId, status, updateUserStatusTC, disabledEditMode, changeEditMode, editMode}) => {
+const ProfileInfo = ({
+	profile, 
+	savePhoto, 
+	isAuthUserId, 
+	isOwner, 
+	status, 
+	updateUserStatusTC, 
+	disabledEditMode, 
+	changeEditMode, 
+	editMode
+}) => {
+
+	const onPhotoSelected = (e) => {
+		if (e.target.files.length) {
+			const file = e.target.files[0];
+			savePhoto(file);
+		}
+	};
+	
 	return (
 		(Object.keys(profile).length === 0) ?
 		
@@ -13,7 +31,19 @@ const ProfileInfo = ({profile, isAuthUserId, status, updateUserStatusTC, disable
 
 		<div className={style.appContent}>
 			<div className={style.appContentAvatarAndDescription}>
-				<img alt="defaultAvatar" className={style.appContentAvatar} src={profile.photos.large ? profile.photos.large : defaultAvatar}/>
+
+				<div className={style.profileDisplay}>
+					<img 
+						className={style.profileAvatar} 
+						src={profile.photos.large ? profile.photos.large : defaultAvatar}
+						alt="avatar"
+					/>
+					{ 
+						isOwner && <div className={style.profileUpdate}>
+							<input type="file" onChange={onPhotoSelected}/> 
+						</div>
+					}
+				</div>
 				
 				<div>
 					<div className={style.appContentName}>{profile.fullName}</div>
@@ -42,5 +72,6 @@ const ProfileInfo = ({profile, isAuthUserId, status, updateUserStatusTC, disable
 		</div>
 	);
 };
+
 
 export default ProfileInfo;

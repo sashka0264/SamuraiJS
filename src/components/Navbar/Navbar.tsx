@@ -22,10 +22,10 @@ const Navbar = ({isAuth}:IProps) => {
         Профиль
       </NavLink>}
 
-      {isAuth && <NavLink to="/news" className={style.appNavLink}>
+      {/* {isAuth && <NavLink to="/news" className={style.appNavLink}>
         <img alt="news-icon" src={news} className={style.appNavImage}/>
         Новости
-      </NavLink>}
+      </NavLink>} */}
 
       {isAuth &&<NavLink to="/dialogs" className={style.appNavLink}>
         <img alt="message-icon" src={message} className={style.appNavImage}/>
@@ -37,15 +37,15 @@ const Navbar = ({isAuth}:IProps) => {
         Найти друзей
       </NavLink>
 
-      {isAuth && <NavLink to="/music" className={style.appNavLink}>
+      {/* {isAuth && <NavLink to="/music" className={style.appNavLink}>
         <img alt="music-icon" src={music} className={style.appNavImage}/>
         Музыка
-      </NavLink>}
+      </NavLink>} */}
 
-      {isAuth &&<NavLink to="/settings" className={style.appNavLink}>
+      {/* {isAuth &&<NavLink to="/settings" className={style.appNavLink}>
         <img alt="setting-icon" src={setting} className={style.appNavImage}/>
         Настройки
-      </NavLink>}
+      </NavLink>} */}
     </nav>
   );
 };

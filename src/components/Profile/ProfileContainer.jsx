@@ -3,11 +3,22 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import {compose} from "redux";
 import {withRouter} from "react-router-dom";
-import {getProfileTC, getUserStatusTC, updateUserStatusTC} from "../../redux/actions";
+import {getProfileTC, getUserStatusTC, updateUserStatusTC, savePhotoTC} from "../../redux/actions";
 import Profile from "./Profile/Profile";
 
 class ProfileContainer extends Component {
   componentDidMount() {
+    this.refreshProfile();
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    const { match: { params: { userId } } } = this.props,
+      { match: { params: { userId : prevUserId } } } = prevProps;
+
+    if (userId !== prevUserId) this.refreshProfile();
+  }
+
+  refreshProfile() {
     const {getProfileTC, getUserStatusTC, match, isAuthUserId, history} = this.props;
     let id = match.params.userId;
     if (!id) {
@@ -21,11 +32,22 @@ class ProfileContainer extends Component {
       getProfileTC(id);
     }
   }
+
   render() {
-    const {profile, status, updateUserStatusTC, isAuthUserId} = this.props;
+    const {
+      profile, 
+      status, 
+      savePhotoTC, 
+      updateUserStatusTC, 
+      isAuthUserId, 
+      match: { params: { userId } }
+    } = this.props;
+    
     return <Profile 
       {...this.props} 
+      isOwner={!userId}
       profile={profile} 
+      savePhoto={savePhotoTC}
       status={status} 
       updateUserStatusTC={updateUserStatusTC}
       isAuthUserId={isAuthUserId}
@@ -42,7 +64,7 @@ const mapStateToProps = ({global}) => ({
 
 
 export default compose(
-  connect(mapStateToProps, {getProfileTC, getUserStatusTC, updateUserStatusTC}),
+  connect(mapStateToProps, {getProfileTC, getUserStatusTC, updateUserStatusTC, savePhotoTC}),
   withRouter
   // Именно в таком порядке, снизу вверх, от первого к последнему
 )(

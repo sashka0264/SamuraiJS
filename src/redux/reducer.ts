@@ -13,7 +13,8 @@ import {
 	SET_USER_STATUS,
 	INITIALIZED_SUCCESS,
 	DELETE_POST,
-	SET_PAGE_PERIOD
+	SET_PAGE_PERIOD,
+	SAVE_PHOTO_SUCCESS
 } from "./actions";
 
 export const initialState = {
@@ -62,6 +63,14 @@ export const initialState = {
 const reducer = (state: any = initialState, action: any) => {
 	// console.log(action)
 	switch (action.type) {
+		case SAVE_PHOTO_SUCCESS:
+			return {
+				...state, 
+				profile: {
+					...state.profile,
+					photos: action.photos
+				}
+			}
 		case SET_PAGE_PERIOD:
 			return {
 				...state, 

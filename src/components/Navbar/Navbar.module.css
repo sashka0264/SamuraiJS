@@ -34,6 +34,13 @@
 
 @media (max-width: 767px) {
   .appNav {
-    display: none;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .appNavLink {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
   }
 }

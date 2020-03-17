@@ -16,7 +16,8 @@ export const SEND_MESSAGE = "SEND-MESSAGE",
 	UPDATE_USER_STATUS = "UPDATE-USER-STATUS",
 	DELETE_POST = "DELETE-POST",
 	INITIALIZED_SUCCESS = "INITIALIZED-SUCCESS",
-	SET_PAGE_PERIOD = "SET_PAGE_PERIOD";
+	SAVE_PHOTO_SUCCESS = "SAVE-PHOTO-SUCCESS",
+	SET_PAGE_PERIOD = "SET-PAGE-PERIOD";
 
 export const sendMessageAC = (text) => ({type: SEND_MESSAGE, content: text}),
 	addPostAC = (text) => ({type: ADD_POST, postMessage: text}),
@@ -33,6 +34,7 @@ export const sendMessageAC = (text) => ({type: SEND_MESSAGE, content: text}),
 	setUserStatusAC = (status) => ({type: SET_USER_STATUS, status}),
 	updateUserStatusAC = () => ({type: UPDATE_USER_STATUS}),
 	setPagePeriodAC = (usePage) => ({type: SET_PAGE_PERIOD, usePage}),
+	savePhotoAC = (photos) => ({type: SAVE_PHOTO_SUCCESS, photos}),
 	initializedSuccess = () => ({type: INITIALIZED_SUCCESS});
 
 const followFlow = async (dispatch, id, apiMethod, actionCreator) => {
@@ -107,6 +109,13 @@ initializeAppTC = () => (dispatch) => {
 		dispatch(initializedSuccess());
 	});
 	// Если будет много dispatch
+},
+savePhotoTC = (file) => async (dispatch) => {
+	let response = await profileAPI.savePhoto(file);
+	console.log(response)
+	if (response.resultCode === 0) {
+		dispatch(savePhotoAC(response.data.photos));
+	}
 };
 
 
