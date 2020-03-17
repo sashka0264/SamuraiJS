@@ -61,14 +61,16 @@ export const initialState = {
 };
 
 const reducer = (state: any = initialState, action: any) => {
-	// console.log(action)
 	switch (action.type) {
 		case SAVE_PHOTO_SUCCESS:
 			return {
 				...state, 
-				profile: {
-					...state.profile,
-					photos: action.photos
+				profilePage: {
+					...state.profilePage,
+					profile: {
+						...state.profilePage.profile,
+						photos: action.photos
+					}
 				}
 			}
 		case SET_PAGE_PERIOD:

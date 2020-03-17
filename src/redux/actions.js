@@ -112,7 +112,7 @@ initializeAppTC = () => (dispatch) => {
 },
 savePhotoTC = (file) => async (dispatch) => {
 	let response = await profileAPI.savePhoto(file);
-	console.log(response)
+	// console.log(response)
 	if (response.resultCode === 0) {
 		dispatch(savePhotoAC(response.data.photos));
 	}
