@@ -37,10 +37,10 @@ const Navbar = ({isAuth}:IProps) => {
         Найти друзей
       </NavLink>
 
-      {/* {isAuth && <NavLink to="/music" className={style.appNavLink}>
+      {isAuth && <NavLink to="/music" className={style.appNavLink}>
         <img alt="music-icon" src={music} className={style.appNavImage}/>
         Музыка
-      </NavLink>} */}
+      </NavLink>}
 
       {/* {isAuth &&<NavLink to="/settings" className={style.appNavLink}>
         <img alt="setting-icon" src={setting} className={style.appNavImage}/>
