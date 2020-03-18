@@ -4,18 +4,26 @@ import style from "./Music.module.css";
 class Music extends Component {
 	constructor() {
 		super()
-		this.url = "https://storage.lightaudio.ru/39922e6c/246ebb18/Skylike%20%E2%80%94%20Dawn.mp3";
-		this.audio = new Audio(this.url);
+		this.audio = new Audio("http://adastraperaspera.ru/mp3/test.mp3");
+		this.audio2 = new Audio("http://adastraperaspera.ru/mp3/Angels_And_Airwaves_-_The_Moon_Atomic_(iPlayer.fm).mp3");
 	}
 
-	play = () => {
+	play = (num) => {
 		this.setState({ play: true, pause: false })
-		this.audio.play();
+		if (num === 1) {
+			this.audio.play();
+		} else {
+			this.audio2.play();
+		}
 	}
 
-	pause = () => {
+	pause = (num) => {
 		this.setState({ play: false, pause: true })
-		this.audio.pause();
+		if (num === 1) {
+			this.audio.pause();
+		} else {
+			this.audio2.pause();
+		}
 	}
 
 	render() {
@@ -23,6 +31,12 @@ class Music extends Component {
 			<div className={style.appMusic}>
 				<div>
 					<div>Dawn - Skylike </div>
+					<button onClick={this.play}>Play</button>
+					<button onClick={this.pause}>Pause</button>
+				</div>
+
+				<div>
+					<div>The Moon-Atomic - Angels And Airwaves </div>
 					<button onClick={this.play}>Play</button>
 					<button onClick={this.pause}>Pause</button>
 				</div>
