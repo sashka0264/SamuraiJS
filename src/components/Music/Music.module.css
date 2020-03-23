@@ -1,3 +1,13 @@
-.appMusic {
+.music {
   padding: 15px;
+}
+
+.playMusic, .stopMusic {
+  width: 25px;
+  height: 25px;
+  margin: 5px 7px 0 0;
+}
+
+.playMusic:hover, .stopMusic:hover {
+  cursor: pointer;
 }

@@ -1,0 +1,18 @@
+.edit {
+    position: absolute;
+    right: 10px;
+    color: #929eb0;
+	font-size: 13px;
+	border: none;
+	background-color: transparent;
+}
+
+.edit:hover {
+    cursor: pointer; 
+    border-bottom: 1px solid #929eb0;
+}
+
+.profileData {
+    position: relative;
+}
+

@@ -1,6 +1,7 @@
 .appStatus {
   color: #939393;
-	font-size: 13px;
+  font-size: 13px;
+  margin-bottom: 13px;
 }
 
 .appStatusEditor {

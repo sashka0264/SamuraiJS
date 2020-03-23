@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import stopMusic from '../../img/stopMusic.png'
+import playMusic from '../../img/playMusic.png'
 import style from "./Music.module.css";
 
 class Music extends Component {
@@ -28,17 +30,17 @@ class Music extends Component {
 
 	render() {
 		return (
-			<div className={style.appMusic}>
+			<div className={style.music}>
 				<div>
 					<div>Dawn - Skylike </div>
-					<button onClick={this.play}>Play</button>
-					<button onClick={this.pause}>Pause</button>
+					<img className={style.playMusic} onClick={() => this.play(1)} src={playMusic}/>
+					<img className={style.stopMusic} onClick={() => this.pause(1)} src={stopMusic}/>
 				</div>
 
 				<div>
 					<div>The Moon-Atomic - Angels And Airwaves </div>
-					<button onClick={this.play}>Play</button>
-					<button onClick={this.pause}>Pause</button>
+					<img className={style.playMusic} onClick={() => this.play(2)} src={playMusic}/>
+					<img className={style.stopMusic} onClick={() => this.pause(2)} src={stopMusic}/>
 				</div>
 			</div>
 		);

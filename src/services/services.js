@@ -37,6 +37,9 @@ const profileAPI = {
         "Content-Type": "multipart/form-data"
       }
     }).then(response => response.data);
+  },
+  saveProfile(formData) {
+    return base.put("profile", formData).then(response => response.data);
   }
 };
 

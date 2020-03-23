@@ -3,7 +3,7 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import {compose} from "redux";
 import {withRouter} from "react-router-dom";
-import {getProfileTC, getUserStatusTC, updateUserStatusTC, savePhotoTC} from "../../redux/actions";
+import {getProfileTC, getUserStatusTC, updateUserStatusTC, savePhotoTC, saveProfileInfoTC} from "../../redux/actions";
 import Profile from "./Profile/Profile";
 
 class ProfileContainer extends Component {
@@ -33,7 +33,13 @@ class ProfileContainer extends Component {
     }
   }
 
+  sendProfileForm = (formData, deactivateMode) => {
+    const {saveProfileInfoTC, isAuthUserId} = this.props;
+    saveProfileInfoTC(formData, isAuthUserId, deactivateMode)
+  }
+  
   render() {
+    
     const {
       profile, 
       status, 
@@ -45,6 +51,7 @@ class ProfileContainer extends Component {
     
     return <Profile 
       {...this.props} 
+      sendProfileForm={this.sendProfileForm}
       isOwner={!userId}
       profile={profile} 
       savePhoto={savePhotoTC}
@@ -59,12 +66,12 @@ const mapStateToProps = ({global}) => ({
   profile: global.profilePage.profile,
   status: global.profilePage.status,
   isAuth: global.auth.isAuth,
-  isAuthUserId: global.auth.userId,
+  isAuthUserId: global.auth.userId
 });
 
 
 export default compose(
-  connect(mapStateToProps, {getProfileTC, getUserStatusTC, updateUserStatusTC, savePhotoTC}),
+  connect(mapStateToProps, {getProfileTC, saveProfileInfoTC, getUserStatusTC, updateUserStatusTC, savePhotoTC}),
   withRouter
   // Именно в таком порядке, снизу вверх, от первого к последнему
 )(

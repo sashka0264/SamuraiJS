@@ -1,0 +1,21 @@
+.basis {
+	display: flex;
+	flex-direction: column;
+}
+
+.basis div {
+	font-size: 13px;
+	font-weight: bold;
+}
+
+.basis span {
+	color: #2a5885;
+	font-size: 13px;
+}
+
+.basis span span {
+	color: #828282;
+	font-size: 13px;
+	width: 165px;
+	display: inline-block;
+}

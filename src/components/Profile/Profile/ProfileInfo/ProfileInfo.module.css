@@ -25,54 +25,12 @@
 	border-radius: 2px;
 }
 
-.appContentName {
+.name {
 	font-size: 21px;
 }
 
-.appContentContacts {
-	display: flex;
-	flex-direction: column;
-	margin: 30px 0 0 0;
-}
-
-.appContentBasis {
-	display: flex;
-	flex-direction: column;
-	margin: 13px 0 0 0;
-}
-
-.appContentBasis div {
-	font-size: 13px;
-	font-weight: bold;
-}
-
-.appContentBasis span {
-	color: #2a5885;
-	font-size: 13px;
-}
-
-.appContentBasis span span {
-	color: #828282;
-	font-size: 13px;
-	width: 165px;
-	display: inline-block;
-}
-
-.appContentContacts div {
-	font-size: 13px;
-	font-weight: bold;
-}
-
-.appContentContacts span {
-	color: #2a5885;
-	font-size: 13px;
-}
-
-.appContentContacts span span {
-	color: #828282;
-	font-size: 13px;
-	width: 165px;
-	display: inline-block;
+.profileUserData {
+	width: -webkit-fill-available;
 }
 
 @media (max-width: 767px) {

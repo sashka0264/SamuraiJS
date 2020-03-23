@@ -110,6 +110,14 @@ initializeAppTC = () => (dispatch) => {
 	});
 	// Если будет много dispatch
 },
+saveProfileInfoTC = (formData, isAuthUserId, deactivateMode) => async (dispatch) => {
+	const response = await profileAPI.saveProfile(formData);
+	
+	if (response.resultCode === 0) {
+		await dispatch(getProfileTC(isAuthUserId));
+		deactivateMode();
+	}
+},
 savePhotoTC = (file) => async (dispatch) => {
 	let response = await profileAPI.savePhoto(file);
 	// console.log(response)
