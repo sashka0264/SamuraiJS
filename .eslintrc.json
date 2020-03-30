@@ -4,11 +4,15 @@
         "es6": true,
         "node": true
     },
-    "extends": "plugin:react/recommended",
+    "extends": [
+        "plugin:react/recommended",
+        "airbnb"
+    ],
     "globals": {
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly"
     },
+    "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
@@ -17,22 +21,13 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react",
+        "@typescript-eslint"
     ],
     "rules": {
-        "indent": [
-            "off"
-        ],
-        "linebreak-style": [
-            "off"
-        ],
-        "quotes": [
-            "error",
-            "double"
-        ],
-        "semi": [
-            "error",
-            "always"
-        ]
+        "linebreak-style": 0,
+        "one-var": 0,
+        "no-trailing-spaces": 0,
+        "comma-dangle": ["error", "never"]
     }
 }

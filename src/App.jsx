@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import { Route, withRouter, HashRouter } from "react-router-dom";
-import {connect} from "react-redux";
-import {compose} from "redux";
-import {store} from "./redux/store";
-import {Provider} from "react-redux";
-import HeaderContainer from "./components/Header/HeaderContainer";
-import Navbar from "./components/Navbar/Navbar";
-import {getMeTC, initializeAppTC} from "./redux/actions";
-import Spinner from "./components/common/Spinner/Spinner";
-import WithSuspense from "./hoc/WithSuspense";
-import style from "./App.module.css";
+
+import React, { Component } from 'react';
+import { Route, withRouter, HashRouter } from 'react-router-dom';
+import { Provider, connect } from 'react-redux';
+import { compose } from 'redux';
+import { store } from './redux/store';
+import HeaderContainer from './components/Header/HeaderContainer';
+import Navbar from './components/Navbar/Navbar';
+import {getMeTC, initializeAppTC} from './redux/actions';
+import Spinner from './components/common/Spinner/Spinner';
+import WithSuspense from './hoc/WithSuspense';
+import style from './App.module.css';
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer')),
   ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer')),
@@ -22,9 +22,11 @@ const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsCo
 const AppContainer = () => {
   return (
     <Provider store={store}>
-      <HashRouter basename={process.env.PUBLIC_URL}> {/* чтобы приложение не падало при роутинге после деплоя */}
-        <AppWithRouter/>
+      <HashRouter basename={process.env.PUBLIC_URL}>
+        {/* чтобы приложение не падало при роутинге после деплоя */}
+        <AppWithRouter />
       </HashRouter> {/* HashRouter позволяет переключаться не по url, а по хэшам */}
+
     </Provider>
   );
 };
@@ -33,30 +35,30 @@ export default AppContainer;
 
 export class App extends Component {
   componentDidMount() {
-    const {initializeAppTC} = this.props;
+    const { initializeAppTC } = this.props;
     initializeAppTC();
   }
 
   render() {
-    const {initialized} = this.props;
+    const { initialized } = this.props;
     if (!initialized) {
-      return <Spinner/>;
+      return <Spinner />;
     }
     return (
       <div className={style.appWrapper}>
-        <HeaderContainer/>
-        <Navbar/>
+        <HeaderContainer />
+        <Navbar />
   
         <div className={style.appReference}>
           <Route 
             path="/profile/:userId?" 
             render={WithSuspense(ProfileContainer, null)}
-          /> 
+          />
 
           <Route 
             path="/dialogs" 
             render={WithSuspense(DialogsContainer, Spinner)}
-          /> 
+          />
 
           <Route 
             path="/news" 
@@ -83,16 +85,12 @@ export class App extends Component {
             render={WithSuspense(LoginPage, Spinner)}
           /> 
         </div>
-
-
-
-        
       </div>
     );
   }
 }
 
-const mapStateToProps = ({global}) => ({
+const mapStateToProps = ({ global }) => ({
   initialized: global.app.initialized
 });
 

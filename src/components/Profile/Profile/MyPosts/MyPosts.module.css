@@ -1,11 +1,13 @@
 .appContentBlock {
-	margin-top: 10px;
+	margin-top: 15px;
 }
 
 .appContentSend {
 	display: flex;
 	background-color: white;
 	padding: 10px;
+	box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
+  border-radius: 2px;
 }
 
 .appContentLetterInput {
@@ -24,11 +26,13 @@
 }
 
 .appContentPosts {
-	padding: 10px 0;
+	padding: 15px 0 0 0;
 }
 
 .appContentPostsTitle {
 	font-weight: bold;
 	color: black;
 	padding: 4px 10px 12px 10px;
+	box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
+	border-radius: 2px 2px 0 0;
 }
