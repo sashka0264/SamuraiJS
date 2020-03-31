@@ -1,5 +1,6 @@
 .appContentBlock {
 	margin-top: 15px;
+	margin-bottom: 15px;
 }
 
 .appContentSend {
@@ -35,4 +36,10 @@
 	padding: 4px 10px 12px 10px;
 	box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
 	border-radius: 2px 2px 0 0;
+}
+
+@media (max-width: 767px) {
+  .appContentPosts {
+		margin-bottom: 57px;
+	}
 }

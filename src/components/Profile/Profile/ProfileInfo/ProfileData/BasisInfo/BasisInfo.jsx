@@ -2,7 +2,7 @@ import React from 'react';
 import style from './BasisInfo.module.css'
 
 const BasisInfo = ({ profile }) => {
-	// console.log(profile)
+	console.log(profile)
 	return (
 		<div className={style.basis}>
 			<div>Основная информация</div>

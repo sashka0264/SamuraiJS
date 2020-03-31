@@ -24,7 +24,7 @@ const Post = ({likes, id, message}:IProps) => {
       
       <div className={style.appContentPostsText}>
         <div>
-          <div className={style.appContentPostsName}>Alexandr Kolesnikov</div>
+          <div className={style.appContentPostsName}>TEST_NAME</div>
           <div>{message}</div>
         </div>
         

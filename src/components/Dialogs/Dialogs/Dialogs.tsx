@@ -43,18 +43,18 @@ const DialogsForm = ({handleSubmit}:any) => {
 
 const DialogsReduxForm = reduxForm({form: "dialogs"})(DialogsForm);
 
-const Dialogs = ({messagesPage, sendMessageAC}:IProps) => {
-  const onSubmit = ({newMessageBody}:any) => {
+const Dialogs = ({ messagesPage, sendMessageAC }:IProps) => {
+  const onSubmit = ({ newMessageBody } :any) => {
     sendMessageAC(newMessageBody);
 	};
   return (
     <div className={style.appDialogs}>
       <div className={style.appDialogsFriendAndMessages}>
-        <div className={style.appDialogsItems}>
+        <div className={style.users}>
           {messagesPage.dialogs.map( (item: {name: string, id: number}) => <DialogItem name={item.name} id={item.id} key={item.id}/>)}
         </div>
 
-        <div className={style.appDialogsMessages}>
+        <div className={style.dialogList}>
           {messagesPage.messages.map( (item: {content: string, id: number}) => <MessageItem content={item.content} key={item.id}/>)}
         </div>
       </div>

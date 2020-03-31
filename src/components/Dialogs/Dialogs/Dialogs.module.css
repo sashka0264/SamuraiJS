@@ -1,6 +1,9 @@
 .appDialogs {
 	display: flex;
+	height: 100%;
 	flex-direction: column;
+	border-radius: 2px;
+  box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
 }
 
 .appDialogsFriendAndMessages {
@@ -8,7 +11,7 @@
 	grid-template-columns: 3fr 9fr;
 	height: 100%;
 	position: relative;
-	margin-bottom: 75px;
+	margin-bottom: 65px;
 }
 
 .appDialogsMessagesSend {
@@ -31,4 +34,14 @@
 	position: absolute;
 	bottom: 0;
 	width: 100%;
+}
+
+.users {
+	border-radius: 2px 0 0 0;
+  box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
+}
+
+.dialogList {
+	border-radius: 0 2px 0 0;
+  box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
 }

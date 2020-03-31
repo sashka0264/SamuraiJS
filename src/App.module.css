@@ -26,10 +26,11 @@
   }
 
   .appWrapper {
+    grid-gap: 0;
     grid-template-areas: 
-    "nav nav nav"
     "header header header"
-    "contentText contentText contentText";
-    grid-template-rows: 61px 39px;
+    "contentText contentText contentText"
+    "nav nav nav";
+    grid-template-rows: 61px 1fr 57px;
   }
 }
