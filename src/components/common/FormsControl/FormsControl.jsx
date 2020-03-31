@@ -1,12 +1,12 @@
-import React from "react";
-import {Field} from "redux-form";
-import style from "./FormsControl.module.css";
+import React from 'react';
+import { Field } from 'redux-form';
+import style from './FormsControl.module.css';
 
 
 const FormControl = ({meta, children}) => {
   const showError = meta.touched && meta.error;
   return (
-    <div className={style.formControl + " " + (showError && style.error) }>
+    <div className={style.formControl + ' ' + (showError && style.error) }>
       <div>
         {children}
       </div>

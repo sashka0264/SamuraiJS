@@ -1,10 +1,10 @@
-import * as axios from "axios";
+import * as axios from 'axios';
 
 const base = axios.create({
-  withCredentials: true,
+  withCredentials: true, 
   // withCredentials (переводится как ваша авторизованность) - чтобы цепануть cookie 
-  baseURL: "https://social-network.samuraijs.com/api/1.0/",
-  headers: {"API-KEY":"9c4c0b67-afad-4fc5-8099-60e295f78a94"}
+  baseURL: 'https://social-network.samuraijs.com/api/1.0/',
+  headers: { 'API-KEY': '9c4c0b67-afad-4fc5-8099-60e295f78a94' }
 });                    
 
 const usersAPI = {
@@ -27,33 +27,38 @@ const profileAPI = {
     return base.get(`profile/status/${userId}`).then(response => response.data);
   },
   updateStatus(status) {
-    return base.put("profile/status", {status: status}).then(response => response.data);
+    return base.put('profile/status', {status: status}).then(response => response.data);
   },
   savePhoto(file) {
     const formData = new FormData();
-    formData.append("image", file);
-    return base.put("profile/photo", formData, {
+    formData.append('image', file);
+    return base.put('profile/photo', formData, {
       headers: {
-        "Content-Type": "multipart/form-data"
+        'Content-Type': 'multipart/form-data'
       }
     }).then(response => response.data);
   },
   saveProfile(formData) {
-    return base.put("profile", formData).then(response => response.data);
+    return base.put('profile', formData).then(response => response.data);
   }
 };
 
 const authAPI = {
   getMe() {
-    return base.get("auth/me").then(response => response.data);
+    return base.get('auth/me').then(response => response.data);
   },
   logIn(email, password, rememberMe) {
-    return base.post("auth/login", {email, password, rememberMe}).then(response => response.data);
+    return base.post('auth/login', {email, password, rememberMe}).then(response => response.data);
   }, 
   logOut() {
-    return base.delete("auth/login");
+    return base.delete('auth/login');
   }
 };
 
+const securityAPI = {
+  getCaptchaUrl() {
+    return base.get('security/get-captcha-url').then(response => response.data);
+  }
+};
 
-export {usersAPI, profileAPI, authAPI};
+export { usersAPI, profileAPI, authAPI, securityAPI };

@@ -1,10 +1,20 @@
-/* eslint-disable react/prop-types */
-import React, {Component} from "react";
-import {connect} from "react-redux";
-import {compose} from "redux";
-import {withRouter} from "react-router-dom";
-import {getProfileTC, getUserStatusTC, updateUserStatusTC, savePhotoTC, saveProfileInfoTC} from "../../redux/actions";
-import Profile from "./Profile/Profile";
+/* 
+  Проблемы, которые решает модуль: 
+  1. Отображение профиля/возможность его изменить.
+  2. Отображение имени, статуса, основной, контактной информации. Возможность их изменять.
+*/
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { withRouter } from 'react-router-dom';
+import { 
+  getProfileTC, 
+  getUserStatusTC, 
+  updateUserStatusTC, 
+  savePhotoTC, 
+  saveProfileInfoTC 
+} from '../../redux/actions';
+import Profile from './Profile/Profile';
 
 class ProfileContainer extends Component {
   componentDidMount() {
@@ -24,7 +34,7 @@ class ProfileContainer extends Component {
     if (!id) {
       id = isAuthUserId;
       if (!id) {
-        history.push("/login");
+        history.push('/login');
       }
     }
     if (id) {
