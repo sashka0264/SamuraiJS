@@ -45,6 +45,10 @@
 	.profileDisplay {
 		margin: auto;
 	}
+
+	.appContent {
+		margin: 0;
+	}
 }
 
 

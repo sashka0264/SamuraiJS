@@ -41,7 +41,7 @@ export class App extends Component {
   render() {
     const { initialized } = this.props;
     if (!initialized) return <Spinner />;
-
+    // console.log(process.env.PUBLIC_URL)
     return (
       <div className={style.appWrapper}>
         <HeaderContainer />
@@ -50,7 +50,7 @@ export class App extends Component {
         <div className={style.appReference}>
           <Switch> 
             {/* Switch идет до первого url, который совпадет, остальные схожие игнорируются */}
-            <Route exact path="/" render={() => <Redirect from="/" to="/profile" />} />
+            <Route exact path={process.env.PUBLIC_URL || '/'} render={() => <Redirect from="/" to="/profile" />} />
 
             <Route path="/dialogs" render={WithSuspense(DialogsContainer, Spinner)} />
 
