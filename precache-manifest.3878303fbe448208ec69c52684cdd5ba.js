@@ -1,14 +1,14 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "efc59909fc816be95ed218198fa976f1",
+    "revision": "36697a61b94c091711c5e0e8cc6bc8e9",
     "url": "/SamuraiJS/index.html"
   },
   {
-    "revision": "8396a1eba9c10a54aa88",
+    "revision": "9c87405aac0d9fe97974",
     "url": "/SamuraiJS/static/css/4.05595b4a.chunk.css"
   },
   {
-    "revision": "938207beae95efbf1642",
+    "revision": "f98c966bcb478539bbe2",
     "url": "/SamuraiJS/static/css/5.d3e98fd3.chunk.css"
   },
   {
@@ -28,7 +28,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/SamuraiJS/static/css/9.c27157c3.chunk.css"
   },
   {
-    "revision": "96caf6d0bd5e3ca24d0a",
+    "revision": "343a931a6f83ae36ea7d",
     "url": "/SamuraiJS/static/css/main.d62a5279.chunk.css"
   },
   {
@@ -36,16 +36,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/SamuraiJS/static/js/0.7c78c354.chunk.js"
   },
   {
-    "revision": "d2ffcb5ea4559be5a10a",
-    "url": "/SamuraiJS/static/js/3.85d44361.chunk.js"
+    "revision": "7d0e76028b2bf3496463",
+    "url": "/SamuraiJS/static/js/3.5c39fbc4.chunk.js"
   },
   {
-    "revision": "8396a1eba9c10a54aa88",
-    "url": "/SamuraiJS/static/js/4.d3b4be8e.chunk.js"
+    "revision": "9c87405aac0d9fe97974",
+    "url": "/SamuraiJS/static/js/4.bb53d43b.chunk.js"
   },
   {
-    "revision": "938207beae95efbf1642",
-    "url": "/SamuraiJS/static/js/5.3a871b93.chunk.js"
+    "revision": "f98c966bcb478539bbe2",
+    "url": "/SamuraiJS/static/js/5.62a9f1e8.chunk.js"
   },
   {
     "revision": "99c4db4dec3288173847",
@@ -64,12 +64,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/SamuraiJS/static/js/9.a8aa8244.chunk.js"
   },
   {
-    "revision": "96caf6d0bd5e3ca24d0a",
-    "url": "/SamuraiJS/static/js/main.0f26f220.chunk.js"
+    "revision": "343a931a6f83ae36ea7d",
+    "url": "/SamuraiJS/static/js/main.1e32ce9d.chunk.js"
   },
   {
-    "revision": "cf76969607a741274ae0",
-    "url": "/SamuraiJS/static/js/runtime~main.46d5eac6.js"
+    "revision": "541cce5b797cdca9bc80",
+    "url": "/SamuraiJS/static/js/runtime~main.ae9dfa79.js"
   },
   {
     "revision": "9fca99c63062888b8ef3fde06decb34b",
