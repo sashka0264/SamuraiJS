@@ -64,11 +64,11 @@ export class App extends Component {
 
             <Route path="/login" render={WithSuspense(LoginPage, Spinner)} /> 
 
-            <Route path="*" render={() => {
+            {/* <Route path="*" render={() => {
               return (
                 <div>404 NOT FOUND</div>
               )
-            }} /> 
+            }} />  */}
           </Switch>
         </div>
       </div>
