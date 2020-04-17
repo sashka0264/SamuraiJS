@@ -1,11 +1,11 @@
-import React from "react";
-import {reduxForm, Field} from "redux-form";
-import DialogItem from "./DialogItem/DialogItem";
-import MessageItem from "./MessageItem/MessageItem";
-import {MessageFormControl} from "../../common/FormsControl/FormsControl";
-import {required, maxLengthCreator, minLengthCreator} from "../../../helpers/validators";
-import sendIcon from "./img/sendIcon.svg";
-import style from "./Dialogs.module.css";
+import React from 'react';
+import {reduxForm, Field, reset } from 'redux-form';
+import DialogItem from './DialogItem/DialogItem';
+import MessageItem from './MessageItem/MessageItem';
+import {MessageFormControl} from '../../common/FormsControl/FormsControl';
+import {required, maxLengthCreator, minLengthCreator} from '../../../helpers/validators';
+import sendIcon from './img/sendIcon.svg';
+import style from './Dialogs.module.css';
 
 interface IProps {
   messagesPage: {
@@ -41,12 +41,17 @@ const DialogsForm = ({handleSubmit}:any) => {
   );
 };
 
-const DialogsReduxForm = reduxForm({form: "dialogs"})(DialogsForm);
+const DialogsReduxForm = reduxForm({
+  form: 'dialogs',
+  onSubmitSuccess: (res, dispatch) => dispatch(reset('dialogs'))
+})(DialogsForm);
 
 const Dialogs = ({ messagesPage, sendMessageAC }:IProps) => {
-  const onSubmit = ({ newMessageBody } :any) => {
+  const onSubmit = ({ newMessageBody, dispatch } :any) => {
     sendMessageAC(newMessageBody);
-	};
+  };
+
+
   return (
     <div className={style.appDialogs}>
       <div className={style.appDialogsFriendAndMessages}>

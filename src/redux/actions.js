@@ -1,5 +1,5 @@
-import { usersAPI, profileAPI, authAPI, securityAPI } from '../services/services';
-import { stopSubmit } from 'redux-form';
+import { usersAPI, profileAPI } from '../services/services';
+
 
 export const SEND_MESSAGE = 'SEND-MESSAGE',
   ADD_POST = 'ADD-POST',
@@ -10,14 +10,11 @@ export const SEND_MESSAGE = 'SEND-MESSAGE',
   SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT',
   TOGGLE_IS_LOADING = 'TOGGLE-IS-LOADING',
   SET_USER_PROFILE = 'SET-USER-PROFILE',
-  SET_USER_DATA = 'network/auth/SET-USER-DATA',
   TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE-IS-FOLLOWING-PROGRESS',
   SET_USER_STATUS = 'SET-USER-STATUS',
   UPDATE_USER_STATUS = 'UPDATE-USER-STATUS',
   DELETE_POST = 'DELETE-POST',
-  INITIALIZED_SUCCESS = 'INITIALIZED-SUCCESS',
   SAVE_PHOTO_SUCCESS = 'SAVE-PHOTO-SUCCESS',
-  GET_CAPTCHA_URL_SUCCESS = 'GET-CAPTCHA-URL-SUCCESS',
   SET_PAGE_PERIOD = 'SET-PAGE-PERIOD';
 
 export const sendMessageAC = (text) => ({ type: SEND_MESSAGE, content: text }),
@@ -30,14 +27,11 @@ export const sendMessageAC = (text) => ({ type: SEND_MESSAGE, content: text }),
   setTotalUsersCountAC = (count) => ({ type: SET_TOTAL_USERS_COUNT, count }),
   toggleIsLoadingAC = (loadingStatus) => ({ type: TOGGLE_IS_LOADING, loadingStatus }),
   setUserProfileAC = (profile) => ({ type: SET_USER_PROFILE, profile }),
-  setUserData = (userId, email, login, isAuth) => ({ type: SET_USER_DATA, userId, email, login, isAuth }),
   toggleIsFollowingProgressAC = (status, userId) => ({ type: TOGGLE_IS_FOLLOWING_PROGRESS, status, userId }),
   setUserStatusAC = (status) => ({ type: SET_USER_STATUS, status }),
   updateUserStatusAC = () => ({ type: UPDATE_USER_STATUS }),
   setPagePeriodAC = (usePage) => ({ type: SET_PAGE_PERIOD, usePage }),
-  savePhotoAC = (photos) => ({ type: SAVE_PHOTO_SUCCESS, photos }),
-  getCaptchaAC = (url) => ({ type: GET_CAPTCHA_URL_SUCCESS, url }),
-  initializedSuccess = () => ({ type: INITIALIZED_SUCCESS });
+  savePhotoAC = (photos) => ({ type: SAVE_PHOTO_SUCCESS, photos });
 
 const followFlow = async (dispatch, id, apiMethod, actionCreator) => {
   dispatch(toggleIsFollowingProgressAC(true, id));
@@ -79,57 +73,16 @@ export const unfollowTC = (id) => async (dispatch) => {
       dispatch(setUserStatusAC(status));
     }
   },
-  getMeTC = () => async (dispatch) => {
-    const data = await authAPI.getMe();
-    if (data.resultCode === 0) {
-      const { id, email, login } = data.data;
-      dispatch(setUserData(id, email, login, true));
-    }
-  },
-  getCaptchaUrlTC = () => async (dispatch) => {
-    const response = await securityAPI.getCaptchaUrl();
-    dispatch(getCaptchaAC(response));
-  },
-  loginTC = (email, password, rememberMe = false, antibot = null) => async (dispatch) => {
-    const data = await authAPI.logIn(email, password, rememberMe, antibot);
-    if (data.resultCode === 0) {
-      dispatch(getMeTC());
-    } else {
-      if (data.resultCode === 10) {
-        dispatch(getCaptchaUrlTC());
-      }
-
-      const message = (data.messages.length > 0) ? data.messages[0] : 'Something wrong',
-        action = stopSubmit('login', { _error: `${message}` });
-      dispatch(action);
-    }
-  },
-  logoutTC = () => async (dispatch) => {
-    const data = await authAPI.logOut();
-    if (data.data.resultCode === 0) {
-      dispatch(setUserData(null, null, null, false));
-    }
-  },
-  initializeAppTC = () => (dispatch) => {
-    let promiseGetMe = dispatch(getMeTC());
-    promiseGetMe.then(() => {
-      dispatch(initializedSuccess());
-    });
-    Promise.all([promiseGetMe]).then(() => {
-      dispatch(initializedSuccess());
-    });
   // Если будет много dispatch
-  },
   saveProfileInfoTC = (formData, isAuthUserId, deactivateMode) => async (dispatch) => {
     const response = await profileAPI.saveProfile(formData);
-	
     if (response.resultCode === 0) {
       await dispatch(getProfileTC(isAuthUserId));
       deactivateMode();
     }
   },
   savePhotoTC = (file) => async (dispatch) => {
-    let response = await profileAPI.savePhoto(file);
+    const response = await profileAPI.savePhoto(file);
     // console.log(response)
     if (response.resultCode === 0) {
       dispatch(savePhotoAC(response.data.photos));

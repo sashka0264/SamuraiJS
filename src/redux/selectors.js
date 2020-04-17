@@ -18,8 +18,8 @@ getLoading = (state) => {
 getFollowingInProgress = (state) => {
   return state.global.usersPage.followingInProgress;
 },
-getIsAuth = (state) => {
-  return state.global.auth.isAuth;
+getIsAuth = ({ auth: { isAuth } }) => {
+  return isAuth;
 },
 getPagePeriod = (state) => {
   return state.global.usersPage.pagePeriod;

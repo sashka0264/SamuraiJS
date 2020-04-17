@@ -12,10 +12,11 @@ import { compose } from 'redux';
 import { store } from './redux/store';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Navbar from './components/Navbar/Navbar';
-import { getMeTC, initializeAppTC } from './redux/actions';
+import { initializeAppTC } from './appReducer';
+import { getMeTC } from './redux/authReducer';
 import Spinner from './components/common/Spinner/Spinner';
 import WithSuspense from './hoc/WithSuspense';
-import style from './App.module.css';
+import style from './App.module.sass';
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer')),
   ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer')),
@@ -36,6 +37,15 @@ export class App extends Component {
   componentDidMount() {
     const { initializeAppTC } = this.props;
     initializeAppTC();
+    window.addEventListener('unhandledrejection', this.catchAllUnhandledErrors);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('unhandledrejection', this.catchAllUnhandledErrors);
+  }
+
+  catchAllUnhandledErrors = (promiseRejectionEvent) => {
+    alert(`UNHANDLED PROMISE REJECTION: ${promiseRejectionEvent}`);
   }
 
   render() {
@@ -76,8 +86,8 @@ export class App extends Component {
   }
 }
 
-const mapStateToProps = ({ global }) => ({
-  initialized: global.app.initialized
+const mapStateToProps = ({ app: { initialized } }) => ({
+  initialized
 });
 
 const AppWithRouter = compose(

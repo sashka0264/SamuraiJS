@@ -1,6 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
-import {reduxForm, Field} from "redux-form";
+import {reduxForm, Field, reset} from "redux-form";
 import {PostFormControl} from "../../../common/FormsControl/FormsControl";
 import {addPostAC} from "../../../../redux/actions";
 import {required, maxLengthCreator, minLengthCreator} from "../../../../helpers/validators";
@@ -24,7 +24,10 @@ const MyPostsForm = ({handleSubmit}:any) => {
     </form>
   );
 };
-const MyPostsReduxForm = reduxForm({form: "posts"})(MyPostsForm);
+const MyPostsReduxForm = reduxForm({
+  form: "posts",
+  onSubmitSuccess: (res, dispatch) => dispatch(reset('posts'))
+})(MyPostsForm);
 
 interface IProps {
   addPostAC: any;

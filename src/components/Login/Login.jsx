@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import { Redirect } from 'react-router-dom';
-import { loginTC } from '../../redux/actions';
+import { loginTC } from '../../redux/authReducer';
 import { LoginInputControl } from '../common/FormsControl/FormsControl';
 import { required, maxLengthCreator, minLengthCreator } from '../../helpers/validators';
 import style from './Login.module.css';
@@ -76,9 +76,9 @@ const Login = ({ loginTC, isAuth, captcha }) => {
   );
 };
 
-const mapStateToProps = ({ global }) => ({ 
-  isAuth: global.auth.isAuth,
-  captcha: global.auth.captchaUrl
+const mapStateToProps = ({ auth: { isAuth, captchaUrl } }) => ({ 
+  isAuth,
+  captcha: captchaUrl
 });
   
 export default connect(mapStateToProps, { loginTC })(Login);

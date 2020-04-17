@@ -47,7 +47,7 @@ const authAPI = {
   getMe() {
     return base.get('auth/me').then(response => response.data);
   },
-  logIn(email, password, rememberMe) {
+  logIn(email, password, rememberMe, antibot) {
     return base.post('auth/login', {email, password, rememberMe}).then(response => response.data);
   }, 
   logOut() {

@@ -50,8 +50,8 @@ const Navbar = ({isAuth}:IProps) => {
   );
 };
 
-const mapStateToProps = ({global}:any) => ({
-  isAuth: global.auth.isAuth
+const mapStateToProps = ({auth: {isAuth}}:any) => ({
+  isAuth
 });
 
 export default connect(mapStateToProps, null)(Navbar);

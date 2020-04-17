@@ -1,0 +1,28 @@
+.appWrapper 
+  box-sizing: border-box
+  display: grid
+  grid-template-rows: 48px 1fr
+  grid-template-columns: max-content 9.6fr
+  grid-gap: 15px
+  grid-template-areas: "header header header" "nav contentText contentText"
+  margin-left: auto
+  margin-right: auto
+  height: 99.5%
+  background-color: rgb(255, 255, 255)
+
+
+.appReference
+  grid-area: contentText
+  margin: 0 15px 15px 0
+  background-color: rgb(255, 255, 255)
+  position: relative
+
+
+@media (max-width: 767px) 
+  .appReference 
+    margin: 0
+  .appWrapper 
+    grid-gap: 0
+    grid-template-areas: "nav nav nav" "header header header" "contentText contentText contentText";
+    grid-template-rows: 57px 57px 1fr
+  

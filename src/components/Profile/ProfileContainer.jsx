@@ -72,11 +72,11 @@ class ProfileContainer extends Component {
   }
 };
 
-const mapStateToProps = ({global}) => ({
+const mapStateToProps = ({global, auth: {isAuth, userId}}) => ({
   profile: global.profilePage.profile,
   status: global.profilePage.status,
-  isAuth: global.auth.isAuth,
-  isAuthUserId: global.auth.userId
+  isAuth,
+  isAuthUserId: userId
 });
 
 

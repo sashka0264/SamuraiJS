@@ -8,27 +8,14 @@ import {
   SET_TOTAL_USERS_COUNT,
   TOGGLE_IS_LOADING,
   SET_USER_PROFILE,
-  SET_USER_DATA,
   TOGGLE_IS_FOLLOWING_PROGRESS,
   SET_USER_STATUS,
-  INITIALIZED_SUCCESS,
   DELETE_POST,
   SET_PAGE_PERIOD,
-  SAVE_PHOTO_SUCCESS,
-  GET_CAPTCHA_URL_SUCCESS
+  SAVE_PHOTO_SUCCESS
 } from './actions';
 
 export const initialState = {
-  app: {
-    initialized: false as boolean
-  },
-  auth: {
-    userId: null as null | number,
-    email: null as null | string,
-    login: null as null | string,
-    isAuth: false as boolean,
-    captchaUrl: null as null | string
-  },
   profilePage: {
     posts: [ 
       { id: 1, message: 'Default', likes: 12 }
@@ -65,14 +52,6 @@ export const initialState = {
 const reducer = (state: any = initialState, action: any) => {
 
   switch (action.type) {
-    case GET_CAPTCHA_URL_SUCCESS: 
-      return {
-        ...state,
-        auth: {
-          ...state.auth,
-          captchaUrl: action.url
-        }
-      };
     case SAVE_PHOTO_SUCCESS:
       return {
         ...state, 
@@ -187,17 +166,6 @@ const reducer = (state: any = initialState, action: any) => {
           profile: { ...action.profile }
         }
       };
-    case SET_USER_DATA:
-      return {
-        ...state,
-        auth: {
-          ...state.auth,
-          userId: action.userId,
-          email: action.email,
-          login: action.login,
-          isAuth: action.isAuth
-        }
-      };
     case TOGGLE_IS_FOLLOWING_PROGRESS: 
       return {
         ...state,
@@ -214,14 +182,6 @@ const reducer = (state: any = initialState, action: any) => {
         profilePage: {
           ...state.profilePage,
           status: action.status
-        }
-      };
-    case INITIALIZED_SUCCESS:
-      return {
-        ...state,
-        app: {
-          ...state.app,
-          initialized: true
         }
       };
     case DELETE_POST:

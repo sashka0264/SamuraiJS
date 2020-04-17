@@ -41,7 +41,6 @@
     width: -webkit-fill-available;
     flex-direction: row;
     justify-content: space-between;
-    bottom: 0;
     border-radius: 0;
   }
 

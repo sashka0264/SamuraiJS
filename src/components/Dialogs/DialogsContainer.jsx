@@ -11,7 +11,7 @@ class DialogsContainer extends PureComponent {
   }
 };
 
-const mapStateToProps = ({global}) => ({messagesPage: global.messagesPage, isAuth: global.auth.isAuth});
+const mapStateToProps = ({global, auth: {isAuth}}) => ({messagesPage: global.messagesPage, isAuth});
 
 export default compose(
   connect(mapStateToProps, {sendMessageAC}), 
