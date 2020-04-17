@@ -4,12 +4,14 @@ import { reducer as formReducer } from 'redux-form';
 import reducer from './reducer';
 import appReducer from '../appReducer';
 import authReducer from '../redux/authReducer';
+import dialogsReducer from '../components/Dialogs/dialogsReducer';
 
 const reducers = combineReducers({ 
   global: reducer, 
   form: formReducer,
   app: appReducer,
-  auth: authReducer
+  auth: authReducer,
+  dialogs: dialogsReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

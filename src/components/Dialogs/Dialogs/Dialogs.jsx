@@ -5,28 +5,12 @@ import MessageItem from './MessageItem/MessageItem';
 import {MessageFormControl} from '../../common/FormsControl/FormsControl';
 import {required, maxLengthCreator, minLengthCreator} from '../../../helpers/validators';
 import sendIcon from './img/sendIcon.svg';
-import style from './Dialogs.module.css';
-
-interface IProps {
-  messagesPage: {
-    dialogs: {
-      id: number;
-      name: string;
-      map: any;
-    };
-    messages: {
-      id: number;
-      content: string;
-      map: any;
-    };
-  };
-  sendMessageAC: any;
-}
+import style from './Dialogs.module.less';
 
 const maxLength = maxLengthCreator(75), 
   minLength = minLengthCreator(2);
 
-const DialogsForm = ({handleSubmit}:any) => {
+const DialogsForm = ({handleSubmit}) => {
   return (
     <form onSubmit={handleSubmit} className={style.appDialogsForm}>
       <Field 
@@ -46,8 +30,8 @@ const DialogsReduxForm = reduxForm({
   onSubmitSuccess: (res, dispatch) => dispatch(reset('dialogs'))
 })(DialogsForm);
 
-const Dialogs = ({ messagesPage, sendMessageAC }:IProps) => {
-  const onSubmit = ({ newMessageBody, dispatch } :any) => {
+const Dialogs = ({ messagesPage, sendMessageAC }) => {
+  const onSubmit = ({ newMessageBody, dispatch }) => {
     sendMessageAC(newMessageBody);
   };
 
@@ -56,11 +40,11 @@ const Dialogs = ({ messagesPage, sendMessageAC }:IProps) => {
     <div className={style.appDialogs}>
       <div className={style.appDialogsFriendAndMessages}>
         <div className={style.users}>
-          {messagesPage.dialogs.map( (item: {name: string, id: number}) => <DialogItem name={item.name} id={item.id} key={item.id}/>)}
+          {messagesPage.dialogs.map( (item) => <DialogItem name={item.name} id={item.id} key={item.id}/>)}
         </div>
 
         <div className={style.dialogList}>
-          {messagesPage.messages.map( (item: {content: string, id: number}) => <MessageItem content={item.content} key={item.id}/>)}
+          {messagesPage.messages.map( (item) => <MessageItem content={item.content} key={item.id}/>)}
         </div>
       </div>
 

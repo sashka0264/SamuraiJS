@@ -1,5 +1,4 @@
 import {
-  SEND_MESSAGE,
   ADD_POST,
   FOLLOW,
   UNFOLLOW,
@@ -23,20 +22,6 @@ export const initialState = {
     profile: {} as {},
     status: '' as string
   },
-  messagesPage: {
-    dialogs: [ 
-      { id: 1, name: 'Уля' }, 
-      { id: 2, name: 'Анна' }, 
-      { id: 3, name: 'Влад' }, 
-      { id: 4, name: 'Тимур' }, 
-      { id: 5, name: 'Андрей' }
-    ] as Array<{id: number, name: string}>,
-    messages: [ 
-      { id: 1, content: 'Привет' }, 
-      { id: 2, content: 'Как дела?' }, 
-      { id: 3, content: ':3' }
-    ] as Array<{id: number, content: string}>
-  }, 
   sidebar: {} as {},
   usersPage: {
     pageSize: 30 as number,
@@ -74,19 +59,6 @@ const reducer = (state: any = initialState, action: any) => {
           }
         }
       }
-    case SEND_MESSAGE: 
-      // с id нужно поработать
-      const newMessage = { id: Date.now(), content: action.content };
-      return {
-        ...state,
-        messagesPage: {
-          ...state.messagesPage,
-          messages: [
-            ...state.messagesPage.messages,
-            newMessage
-          ]
-        }
-      };
     case ADD_POST:
       // с id нужно поработать
       const newPost = { id: Date.now(), message: action.postMessage, likes: 0 };

@@ -1,8 +1,7 @@
 import { usersAPI, profileAPI } from '../services/services';
 
 
-export const SEND_MESSAGE = 'SEND-MESSAGE',
-  ADD_POST = 'ADD-POST',
+export const ADD_POST = 'ADD-POST',
   FOLLOW = 'FOLLOW',
   UNFOLLOW = 'UNFOLLOW',
   SET_USERS = 'SET-USERS',
@@ -17,8 +16,7 @@ export const SEND_MESSAGE = 'SEND-MESSAGE',
   SAVE_PHOTO_SUCCESS = 'SAVE-PHOTO-SUCCESS',
   SET_PAGE_PERIOD = 'SET-PAGE-PERIOD';
 
-export const sendMessageAC = (text) => ({ type: SEND_MESSAGE, content: text }),
-  addPostAC = (text) => ({ type: ADD_POST, postMessage: text }),
+export const addPostAC = (text) => ({ type: ADD_POST, postMessage: text }),
   deletePostAC = (id) => ({ type: DELETE_POST, id }),
   followAC = (id) => ({ type: FOLLOW, id }),
   unfollowAC = (id) => ({ type: UNFOLLOW, id }),
